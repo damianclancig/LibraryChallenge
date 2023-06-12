@@ -16,23 +16,18 @@ public class LibroServiceImpl implements LibroService {
 	private LibroRepository libroRepository;
 
 	@Override
-	public Optional<List<Libro>> findByName(String name) {
-		return Optional.of(libroRepository.findAll());
-	}
-
-	@Override
-	public Optional<List<Libro>> findByCategory(String category) {
-		return Optional.of(libroRepository.findAll());
-	}
-
-	@Override
-	public Optional<List<Libro>> findByAuthor(String author) {
-		return Optional.of(libroRepository.findAll());
-	}
-
-	@Override
 	public List<Libro> findAll() {
 		return libroRepository.findAll();
+	}
+
+	@Override
+	public Optional<Libro> findById(Integer idLibro) {
+		return libroRepository.findById(idLibro);
+	}
+
+	@Override
+	public void saveOrUpdate(Libro libro) {
+		libroRepository.save(libro);		
 	}
 
 }

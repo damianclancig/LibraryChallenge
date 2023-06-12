@@ -6,16 +6,22 @@
 </head>
 
 <body>
-	<h1>Hello Library books</h1>
+	<h1>Wellcome Library</h1>
 
-
+	<div>
+		<form method="post" th:action="@{/search}">
+			<span>Buscador</span>
+			<input type="text" name="textSearch" placeholder="Ingrese texto" />
+			<input type="submit" value="Buscar" />
+		</form>
+	</div>
 	<table>
 		<thead>
 			<tr>
 				<th>Nombre</th>
 				<th>Autor</th>
 				<th>Categoría</th>
-				<th>Reservar</th>
+				<th>Reservado</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,7 +29,8 @@
 				<td th:text="${libro.nombre}"></td>
 				<td th:text="${libro.autor.nombre}"></td>
 				<td th:text="${libro.categoria.nombre}"></td>
-				<td th:text="${libro.reservadoPor.nombre}"></td>
+				<td th:text="${libro.estaReservado}"></td>
+				<td><a th:href="@{/reserve/{idLibro} (idLibro=${libro.idLibro}) }">Reservar</a></td>
 			</tr>
 		</tbody>
 	</table>

@@ -2,7 +2,6 @@ package com.cda.library.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +18,7 @@ public class Libro {
 	@Column(name = "id_libro")
 	private Integer idLibro;
 	private String nombre;
+	private Boolean reservado;
 
 	@OneToOne
 	@JoinColumn(name = "autor_pkey")
@@ -26,9 +26,6 @@ public class Libro {
 	@OneToOne
 	@JoinColumn(name = "categoria_pkey")
 	private Categoria categoria;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_pkey", nullable = true)
-	private Usuario reservadoPor;
 
 	public Integer getIdLibro() {
 		return idLibro;
@@ -62,11 +59,16 @@ public class Libro {
 		this.categoria = categoria;
 	}
 
-	public Usuario getReservadoPor() {
-		return reservadoPor;
+	public Boolean getReservado() {
+		return reservado;
 	}
 
-	public void setReservadoPor(Usuario reservadoPor) {
-		this.reservadoPor = reservadoPor;
+	public void setReservado(Boolean reservado) {
+		this.reservado = reservado;
 	}
+	
+	public String estaReservado() {
+		return this.reservado!=null&&this.reservado?"Si":"No";
+	}
+
 }
