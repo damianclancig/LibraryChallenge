@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>My library app</title>
+</head>
+
+<body>
+	<h1>Hello Library books</h1>
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Autor</th>
+				<th>Categoría</th>
+				<th>Reservar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="libro:${libros}">
+				<td th:text="${libro.nombre}"></td>
+				<td th:text="${libro.autor.nombre}"></td>
+				<td th:text="${libro.categoria.nombre}"></td>
+				<td th:text="${libro.reservadoPor.nombre}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
